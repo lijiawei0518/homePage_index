@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>TimesH</title>
+    <link rel="Shortcut Icon" href="timeshphoto.jpg" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!--    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>-->
+<!--    <meta http-equiv="Pragma" content="no-cache"/>-->
+    <meta http-equiv="Expires" content="0"/>
+    <!-- 动画 -->
+    <style>
+        @keyframes shake-bounce {
+            0%,
+            100% {
+                -webkit-transform: rotate(0);
+                -moz-transform: rotate(0);
+                transform: rotate(0);
+                -ms-transform: rotate(0)
+            }
+            25% {
+                -webkit-transform: rotate(15deg);
+                transform: rotate(15deg);
+                -ms-transform: rotate(15deg)
+            }
+            50% {
+                -webkit-transform: rotate(-15deg);
+                -moz-transform: rotate(-15deg);
+                transform: rotate(-15deg);
+                -ms-transform: rotate(-15deg)
+            }
+            75% {
+                -webkit-transform: rotate(5deg);
+                -moz-transform: rotate(5deg);
+                transform: rotate(5deg);
+                -ms-transform: rotate(5deg)
+            }
+            85% {
+                /* -webkit-transform:rotate(-5deg); */
+                -moz-transform: rotate(-5deg);
+                /* transform:rotate(-5deg); */
+                -ms-transform: rotate(-5deg);
+            }
+        }
+
+        @-webkit-keyframes shake-bounce {
+            0%,
+            100% {
+                -webkit-transform: rotate(0);
+                -moz-transform: rotate(0);
+                transform: rotate(0);
+                -ms-transform: rotate(0)
+            }
+            25% {
+                -webkit-transform: rotate(15deg);
+                -moz-transform: rotate(15deg);
+                transform: rotate(15deg);
+                -ms-transform: rotate(15deg)
+            }
+            50% {
+                -webkit-transform: rotate(-15deg);
+                -moz-transform: rotate(-15deg);
+                transform: rotate(-15deg);
+                -ms-transform: rotate(-15deg)
+            }
+            75% {
+                -webkit-transform: rotate(5deg);
+                -moz-transform: rotate(5deg);
+                transform: rotate(5deg);
+                -ms-transform: rotate(5deg)
+            }
+            85% {
+                -webkit-transform: rotate(-5deg);
+                -moz-transform: rotate(-5deg);
+                transform: rotate(-5deg);
+                -ms-transform: rotate(-5deg)
+            }
+        }
+
+        @-moz-keyframes shake-bounce {
+            0%,
+            100% {
+                -webkit-transform: rotate(0);
+                -moz-transform: rotate(0);
+                transform: rotate(0);
+                -ms-transform: rotate(0)
+            }
+            25% {
+                -webkit-transform: rotate(15deg);
+                -moz-transform: rotate(15deg);
+                transform: rotate(15deg);
+                -ms-transform: rotate(15deg)
+            }
+            50% {
+                -webkit-transform: rotate(-15deg);
+                -moz-transform: rotate(-15deg);
+                transform: rotate(-15deg);
+                -ms-transform: rotate(-15deg)
+            }
+            75% {
+                -webkit-transform: rotate(5deg);
+                -moz-transform: rotate(5deg);
+                transform: rotate(5deg);
+                -ms-transform: rotate(5deg)
+            }
+            85% {
+                -webkit-transform: rotate(-5deg);
+                -moz-transform: rotate(-5deg);
+                transform: rotate(-5deg);
+                -ms-transform: rotate(-5deg)
+            }
+        }
+
+        @-o-keyframes shake-bounce {
+            0%,
+            100% {
+                -webkit-transform: rotate(0);
+                -moz-transform: rotate(0);
+                transform: rotate(0);
+                -ms-transform: rotate(0)
+            }
+            25% {
+                -webkit-transform: rotate(15deg);
+                -moz-transform: rotate(15deg);
+                transform: rotate(15deg);
+                -ms-transform: rotate(15deg)
+            }
+            50% {
+                -webkit-transform: rotate(-15deg);
+                -moz-transform: rotate(-15deg);
+                transform: rotate(-15deg);
+                -ms-transform: rotate(-15deg)
+            }
+            75% {
+                -webkit-transform: rotate(5deg);
+                -moz-transform: rotate(5deg);
+                transform: rotate(5deg);
+                -ms-transform: rotate(5deg)
+            }
+            85% {
+                -webkit-transform: rotate(-5deg);
+                -moz-transform: rotate(-5deg);
+                transform: rotate(-5deg);
+                -ms-transform: rotate(-5deg)
+            }
+        }
+
+        @keyframes loading {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <style id="open-app">
+        @keyframes open-app {
+            100% {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    </style>
+    <!-- 一般样式 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        *::-webkit-scrollbar {
+            display: none
+        }
+
+        html {
+            min-width: 640px;
+        }
+
+        body {
+            background-image: linear-gradient(to bottom, #061e2b 0, #0f2937 1px, transparent 1px), linear-gradient(to right, #0f2937 0, #0f2937 1px, transparent 1px);
+            background-size: 25px 25px;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-position: bottom;
+            background-color: #111;
+            min-width: 640px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #DDD;
+        }
+
+        .openapp {
+            background: white;
+            position: absolute;
+            z-index: 1000;
+            animation: open-app .2s forwards;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .openapp svg {
+            animation: loading 3s infinite linear;
+        }
+
+        #main {
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        #main .topbar {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            background-color: #444;
+            color: #DDD;
+            font-size: 1em;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #main .topbar .left {
+            padding-left: 1em;
+            float: left;
+        }
+
+        #main .topbar .right {
+            padding-right: 1em;
+            float: right;
+        }
+
+        #main .topbar .middle {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+        }
+
+        #main .content {
+            width: 100%;
+            height: calc(100% - 30px - 165px);
+            overflow-y: scroll;
+        }
+
+        .content .grid {
+            margin-top: 1.5em;
+        }
+
+        .content .grid strong {
+            line-height: 3em;
+        }
+
+        .grid {
+            width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .grid .app {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
+        }
+
+        .grid a {
+            width: 100%;
+            height: 100%;
+        }
+
+        .grid a > * {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .grid span {
+            display: flex block;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 60%;
+            /* min-width: 96px; */
+            -webkit-animation-name: shake;
+            animation-name: shake;
+        }
+
+        .grid span:hover {
+            -webkit-animation: shake-bounce .5s alternate;
+            -moz-animation: shake-bounce .5s alternate;
+            -o-animation: shake-bounce .5s alternate;
+            animation: shake-bounce .5s alternate;
+        }
+
+        #main .footerbar {
+            width: 100%;
+            height: 165px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-content: center;
+        }
+
+        #main .footerbar .grid {
+            position: absolute;
+            bottom: .3em;
+            width: 100%;
+            z-index: 20;
+            display: flex;
+            justify-content: center;
+        }
+
+        #main .footerbar .background {
+            width: 90%;
+            height: 50%;
+            margin: 0 auto;
+            background-color: white;
+            opacity: 0.3;
+            display: block;
+            border-radius: 30px;
+            z-index: 10;
+        }
+
+        #main .footerbar .copyright {
+            width: 100%;
+            z-index: 30;
+            color: #DDD;
+            text-align: center;
+            font-size: 10px;
+        }
+    </style>
+    <!-- 自适应 -->
+    <style>
+        /*横屏*/
+        @media all and (orientation: landscape) {
+            @media screen and (max-width: 639px) {
+                .app {
+                    width: 25%;
+                    height: 25vw;
+                }
+
+                .footerbar .app {
+                    width: 20%;
+                    height: 20vw;
+                }
+            }
+            @media screen and (min-width: 640px) and (max-width: 859px) {
+                .app {
+                    width: 20%;
+                    height: 20vw;
+                }
+
+                #main .footerbar .background {
+                    height: 50%;
+                }
+            }
+            @media screen and (min-width: 860px) and (max-width: 1349px) {
+                .app {
+                    width: 16.65%;
+                    height: 16.65vw;
+                }
+
+                #main .footerbar .background {
+                    height: 55%;
+                }
+            }
+            @media screen and (min-width: 1350px) and (max-width: 1899px) {
+                .app {
+                    width: 14.23%;
+                    height: 14.23vw;
+                }
+
+                #main .footerbar .background {
+                    height: 60%;
+                }
+            }
+            @media screen and (min-width: 1900px) {
+                .app {
+                    width: 12.5%;
+                    height: 12.5vw;
+                }
+
+                #main .footerbar .background {
+                    height: 65%;
+                }
+            }
+        }
+
+        /*竖屏*/
+        @media all and (orientation: portrait) {
+            .footerbar .app {
+                width: 20%;
+                height: 20vw;
+            }
+
+            #main .footerbar .background {
+                height: 50%;
+            }
+
+            @media screen and (max-width: 764px) {
+                .app {
+                    width: 25%;
+                    height: 25vw;
+                }
+            }
+            @media screen and (min-width: 765px) {
+                .app {
+                    width: 20%;
+                    height: 20vw;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div id="main">
+    <div class="topbar">
+        <div class="right hello"></div>
+        <div class="left title"></div>
+        <div class="middle clock"></div>
+    </div>
+    <div class="content">
+        <div class="grid"></div>
+    </div>
+    <div class="footerbar">
+        <div class="grid"></div>
+        <div class="background"></div>
+        <div class="copyright">
+            <div style="visibility:hidden">Copyright © <label class="year"></label>
+                By <label class="user"></label>. 保留所有权利。<a rel="nofollow" href="https://beian.miit.gov.cn/"
+                                                           target="_blank" class="icp"></a></div>
+        </div>
+    </div>
+</div>
+<script>
+    {
+        let lsHave = false;
+        lsHave = getCookie();
+        if (lsHave) {
+            window.location.href = "http://timesh.top:8081/";
+        } else {
+            var exp1 = new Date();
+            exp1.setTime(exp1.getTime() + 2000);
+            document.cookie = "isHaveTag" + "=" + null + ";expires=" + exp1.toGMTString() + ";path=/";
+        }
+
+        function getCookie() {
+            var reg = new RegExp("isHaveTag");
+            if (document.cookie.match(reg)) {
+                return true;
+            }
+        }
+
+    }
+</script>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
